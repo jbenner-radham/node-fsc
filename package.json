@@ -1,15 +1,26 @@
 {
-  "name": "node-starter",
+  "name": "fsc",
   "version": "0.0.0",
-  "description": "...",
-  "keywords": [],
-  "homepage": "https://github.com/jbenner-radham/node-starter#readme",
+  "description": "A CLI app to fetch the HTTP status codes from the IANA registry.",
+  "keywords": [
+    "class",
+    "cli",
+    "code",
+    "fetch",
+    "http",
+    "iana",
+    "json",
+    "registry",
+    "status",
+    "yaml"
+  ],
+  "homepage": "https://github.com/jbenner-radham/node-fsc#readme",
   "bugs": {
-    "url": "https://github.com/jbenner-radham/node-starter/issues"
+    "url": "https://github.com/jbenner-radham/node-fsc/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbenner-radham/node-starter.git"
+    "url": "git+https://github.com/jbenner-radham/node-fsc.git"
   },
   "license": "BSD-3-Clause",
   "author": "James Benner <hello@jamesbenner.com> (https://www.jamesbenner.com/)",
@@ -25,13 +36,18 @@
       "default": "./dist/cjs/index.js"
     }
   },
+  "bin": {
+    "fsc": "./dist/esm/cli.js"
+  },
   "files": [
     "dist",
     "CHANGELOG.md"
   ],
   "scripts": {
+    "bin": "tsx ./src/cli.ts",
     "prebuild": "rimraf ./dist",
-    "build": "duo-build",
+    "build": "duo-build --packages external --platform node",
+    "postbuild": "is-x ./dist/esm/cli.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "husky",
@@ -40,11 +56,19 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest"
   },
+  "dependencies": {
+    "fetch-status-codes": "^0.2.0",
+    "js-yaml": "^4.1.1",
+    "meow": "^14.0.0",
+    "meowtastic": "^0.7.2"
+  },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
     "@eslint/json": "^0.14.0",
     "@radham/changelog": "^0.1.0",
     "@radham/eslint-config": "^12.0.0",
+    "@radham/is-x": "^0.5.1",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.18.8",
     "@vitest/coverage-v8": "^4.0.16",
     "duo-build": "^0.2.1",
@@ -54,6 +78,7 @@
     "lint-staged": "^16.2.7",
     "rimraf": "^6.1.2",
     "sort-package-json": "^3.6.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16"
   },
