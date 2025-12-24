@@ -15,7 +15,8 @@ const cli = meow(
         type: 'boolean'
       },
       doNotResolveRedirects: {
-        description: 'Do not resolve URL redirects.',
+        description:
+          'Do not resolve URL redirects. This can greatly benefit app performance as well.',
         default: false,
         shortFlag: 'd',
         type: 'boolean'
