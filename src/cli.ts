@@ -14,10 +14,10 @@ const cli = meow(
         shortFlag: 'c',
         type: 'boolean'
       },
-      noRedirectResolution: {
+      doNotResolveRedirects: {
         description: 'Do not resolve URL redirects.',
         default: false,
-        shortFlag: 'n',
+        shortFlag: 'd',
         type: 'boolean'
       },
       yaml: {
@@ -38,7 +38,7 @@ if (cli.flags.classes) {
 
   console.log(cli.flags.yaml ? dump(classes, dumpOptions) : classes);
 } else {
-  const resolveRedirects = !cli.flags.noRedirectResolution;
+  const resolveRedirects = !cli.flags.doNotResolveRedirects;
   const codes = await fetchStatusCodes({ resolveRedirects });
 
   if (cli.flags.yaml) {
