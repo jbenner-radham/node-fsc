@@ -1,5 +1,5 @@
 {
-  "name": "fsc",
+  "name": "@radham/fsc",
   "version": "0.1.0",
   "description": "A CLI app to fetch the HTTP status codes from the IANA registry.",
   "keywords": [

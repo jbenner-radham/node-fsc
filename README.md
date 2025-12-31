@@ -1,5 +1,5 @@
-fsc
-===
+@radham/fsc
+===========
 
 A CLI app to fetch the HTTP status codes from the [IANA](https://www.iana.org/) registry.
 
