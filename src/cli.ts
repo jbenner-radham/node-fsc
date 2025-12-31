@@ -14,11 +14,11 @@ const cli = meow(
         shortFlag: 'c',
         type: 'boolean'
       },
-      doNotResolveRedirects: {
-        description:
-          'Do not resolve URL redirects. This can greatly benefit app performance as well.',
+      resolveRedirects: {
+        description: 'Resolve URL redirects and add a section hash to the URL as well if' +
+          ' applicable. This increases operation time by approximately one second total.',
         default: false,
-        shortFlag: 'd',
+        shortFlag: 'r',
         type: 'boolean'
       },
       yaml: {
@@ -39,7 +39,7 @@ if (cli.flags.classes) {
 
   console.log(cli.flags.yaml ? dump(classes, dumpOptions) : classes);
 } else {
-  const resolveRedirects = !cli.flags.doNotResolveRedirects;
+  const resolveRedirects = cli.flags.resolveRedirects as boolean;
   const codes = await fetchStatusCodes({ resolveRedirects });
 
   if (cli.flags.yaml) {
