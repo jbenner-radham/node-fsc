@@ -1,6 +1,6 @@
 #!/usr/bin/env node
+import { yamlStringify } from './index.js';
 import fetchStatusCodes, { fetchStatusCodeClasses } from 'fetch-status-codes';
-import { dump, type DumpOptions } from 'js-yaml';
 import meow from 'meow';
 import { getHelpTextAndOptions } from 'meowtastic';
 
@@ -32,12 +32,10 @@ const cli = meow(
   })
 );
 
-const dumpOptions: DumpOptions = { lineWidth: -1 };
-
 if (cli.flags.classes) {
   const classes = await fetchStatusCodeClasses();
 
-  console.log(cli.flags.yaml ? dump(classes, dumpOptions) : classes);
+  console.log(cli.flags.yaml ? yamlStringify(classes) : classes);
 } else {
   const resolveRedirects = cli.flags.resolveRedirects as boolean;
   const codes = await fetchStatusCodes({ resolveRedirects });
@@ -45,7 +43,7 @@ if (cli.flags.classes) {
   if (cli.flags.yaml) {
     // We use `console.log` here because using `console.dir` prints the raw string output. That
     // includes quotes, concatenation operators, new line characters, etc.
-    console.log(dump(codes, dumpOptions));
+    console.log(yamlStringify(codes));
   } else {
     // We use `console.dir` here because the status codes are nested too deep for `console.log`.
     console.dir(codes, { depth: null });
