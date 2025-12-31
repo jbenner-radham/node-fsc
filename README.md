@@ -15,7 +15,7 @@ Install
 -------
 
 ```sh-session
-npm install fsc
+npm install @radham/fsc
 ```
 
 Usage
