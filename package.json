@@ -1,6 +1,6 @@
 {
   "name": "fsc",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A CLI app to fetch the HTTP status codes from the IANA registry.",
   "keywords": [
     "class",
