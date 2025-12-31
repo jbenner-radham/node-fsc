@@ -16,7 +16,7 @@ const cli = meow(
       },
       resolveRedirects: {
         description: 'Resolve URL redirects and add a section hash to the URL as well if' +
-          ' applicable. This increases operation time by approximately one second total.',
+          ' applicable. This increases total operation time by approximately one second.',
         default: false,
         shortFlag: 'r',
         type: 'boolean'
